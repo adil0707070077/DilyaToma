@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Видео со стилем ❤️</title>
+    <style>
+        /* Фон и базовые стили */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5dc; /* костный цвет */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #c44d4d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Контейнер для видео по центру */
+        .video-container {
+            width: 700px;      /* фиксированная ширина плеера */
+            max-width: 90%;    /* адаптивно на маленьких экранах */
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            width: 100%;       /* подстраивается под контейнер */
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* Сердечки */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff4d6d;
+            animation: float 5s linear infinite;
+            pointer-events: none; /* не мешают клику по видео */
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>❤️</h1>
+
+    <!-- Видео по центру, аккуратного размера -->
+    <div class="video-container">
+        <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </div>
+
+    <script>
+        // Создаем множество сердечек
+        const colors = ['#ff4d6d', '#ff7f7f', '#ff99aa', '#ffb3b3'];
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+            heart.style.fontSize = (12 + Math.random() * 24) + 'px';
+            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            heart.textContent = '❤️';
+            document.body.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
